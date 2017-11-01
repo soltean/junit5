@@ -7,6 +7,7 @@ import org.junit.runners.model.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+@Deprecated
 public class ItemRule implements TestRule {
 
 	private List<Item> items;
