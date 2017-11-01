@@ -3,16 +3,15 @@ package com.so;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.Rule;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.extension.ExtendWith;
+
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+//@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+@ExtendWith(ItemExtension.class)
 class AuctionTest {
 
 	@Rule
@@ -33,6 +32,7 @@ class AuctionTest {
 
 	@Test
 	@DisplayName("Items should be sell at the auction")
+	@Tag("pass")
 	void testSellItemAtAuction() {
 		int bid1 = 100;
 		int bid2 = 200;
@@ -50,6 +50,7 @@ class AuctionTest {
 
 	@Test
 	@DisplayName("Items should NOT be sell at the auction")
+	@Tag("pass")
 	void testCannotSellItemAtAuction3() {
 		int bid1 = 1000;
 		int bid2 = 800;
@@ -67,6 +68,7 @@ class AuctionTest {
 
 	@Test
 	@DisplayName("This should fail")
+	@Tag("fail")
 	void testExpectToFail() {
 		int bid1 = 100;
 		int bid2 = 200;
@@ -83,7 +85,6 @@ class AuctionTest {
 			Bid winningBid = auction.sellItem(goldPen);
 			assertEquals(winningBid.getAmount(), bid3 + 1, "The winning bid is " + bid3);
 		});
-
 	}
 
 }
