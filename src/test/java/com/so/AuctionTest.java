@@ -1,11 +1,12 @@
 package com.so;
 
-import java.util.ArrayList;
 import java.util.List;
-import org.junit.Rule;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInfo;
 import org.junit.jupiter.api.extension.ExtendWith;
-
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -14,15 +15,19 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 @ExtendWith(ItemExtension.class)
 class AuctionTest {
 
-	@Rule
-	ItemRule itemRule = new ItemRule();
+	/*@Rule
+	ItemRule itemRule = new ItemRule();*/
 
-	List items = new ArrayList();
-
-	@BeforeAll
+	/*@BeforeAll
 	void buildItems() {
 		items.add(new Item("code1", 100));
 		items.add(new Item("code2", 1500));
+	}*/
+
+	List items;
+
+	AuctionTest(List items) {
+		this.items = items;
 	}
 
 	@Test
@@ -33,7 +38,7 @@ class AuctionTest {
 	@Test
 	@DisplayName("Items should be sell at the auction")
 	@Tag("pass")
-	void testSellItemAtAuction() {
+	void testSellItemAtAuction(TestInfo testInfo) {
 		int bid1 = 100;
 		int bid2 = 200;
 		int bid3 = 300;
