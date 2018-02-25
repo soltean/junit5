@@ -8,8 +8,7 @@ pipeline {
     }
     stage('Get maven info') {
       steps {
-        sh '''echo $M2_HOME
-mvn -version'''
+        sh 'echo $M2_HOME'
       }
     }
   }
