@@ -6,5 +6,11 @@ pipeline {
         echo 'Hello Jenkins user!'
       }
     }
+    stage('Get maven info') {
+      steps {
+        sh '''echo $M2_HOME
+mvn -version'''
+      }
+    }
   }
 }
