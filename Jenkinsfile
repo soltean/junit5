@@ -9,7 +9,7 @@ pipeline {
     stage('Get Maven info') {
       agent {
         docker {
-          image 'maven'
+          image 'maven:3.5.2'
         }
         
       }
