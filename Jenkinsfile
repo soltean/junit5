@@ -1,5 +1,10 @@
 pipeline {
-  agent any
+  agent {
+    docker {
+      image 'maven'
+    }
+    
+  }
   stages {
     stage('Hello') {
       steps {
@@ -9,7 +14,7 @@ pipeline {
     stage('Get Maven info') {
       agent {
         docker {
-          image 'maven:3.5.2'
+          image 'maven'
         }
         
       }
