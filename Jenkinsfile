@@ -6,7 +6,13 @@ pipeline {
         echo 'Hello Jenkins user!'
       }
     }
-    stage('Get maven info') {
+    stage('Get Maven info') {
+      agent {
+        docker {
+          image 'maven:3.5.2'
+        }
+        
+      }
       steps {
         sh 'echo $M2_HOME'
       }
